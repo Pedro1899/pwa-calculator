@@ -60,10 +60,14 @@ export class CurrencyConverterComponent implements OnInit {
           this.procesingData(value)
         });
       } else { this.offline=true
-       
         this.procesingData(value)
       }
     
+    }else{
+      this.currencyExchange.to.forEach(item => {
+        item.value = 0
+        item.result = ""
+      })
     }
   }
   procesingData(value: string) {
