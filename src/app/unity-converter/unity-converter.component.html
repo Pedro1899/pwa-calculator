@@ -1,0 +1,54 @@
+<div fxLayout="column"  style="height: 100vh;">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <button mat-icon-button  class="toolbar-button"  (click)="saveList()">
+            <mat-icon>save_outline</mat-icon>
+          </button>
+        <h1 style="text-align: center; margin:10px">Measure Converter</h1>
+        <button mat-icon-button  class="toolbar-button"  (click)="NewMeasure()">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+    </div>
+    <div fxLayout="column" style="flex: 1; overflow-y: auto;">
+      <mat-card  *ngFor="let Conversion of ConversionList let i = index" class="mat-elevation-z4 "  class="measureCard">
+        <mat-card-content  fxLayout="column" fxLayoutAlign="space-evenly center" class="measureCard-content" >
+            <div fxLayout="row">
+                <div fxFlex="85" fxLayoutAlign="space-evenly center"  fxFlexAlign="center">
+               
+                    <div  fxLayout="column" class="newMeassure">
+                     <mat-form-field>
+                         <mat-select [(value)]="Conversion.from.name" (selectionChange)="changeMeasure(i,'from')">
+                             <mat-option *ngFor="let unit of getUnityArray let i = index" [value]="unit.name">{{unit.name}}</mat-option>     
+                           </mat-select>
+                     </mat-form-field>
+                     <input matInput placeholder="From" type="text" [value]="Conversion.from.value" (input)="toValueChange($event,i,'to')">
+                    </div>
+                     <mat-icon>compare_arrows</mat-icon>
+                     <div  fxLayout="column" class="newMeassure">
+                         <mat-form-field>
+                             <mat-select [(value)]="Conversion.to.name"(selectionChange)="changeMeasure(i,'to')" >
+                                 <mat-option *ngFor="let unit of getUnityArray let i = index" [value]="unit.name">{{unit.name}}</mat-option>     
+                               </mat-select>
+                         </mat-form-field>
+                         <input matInput type="number" placeholder="To" [value]="Conversion.to.value" (input)="toValueChange($event,i,'from')">                  
+                        </div>
+                    
+                 </div>
+                 <div fxFlex="15" >
+                     <button mat-icon-button  class="toolbar-button"  (click)="deleteMeasure(i)">
+                         <mat-icon>delete_outline</mat-icon>
+                       </button> 
+                 </div>
+            </div>
+           <div  fxLayout="row" style="width: 100%;" > 
+            <div *ngIf="Conversion.from.value !== 0 " fxFlex="40" class="resultText">
+{{Conversion.displayValue}}
+            </div>
+            
+           </div>
+        </mat-card-content>
+
+     
+      </mat-card>
+    </div>
+  </div>
+  

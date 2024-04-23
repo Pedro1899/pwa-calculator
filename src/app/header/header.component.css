@@ -1,0 +1,22 @@
+.custom-toolbar {
+    background-color: #2196f3;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-button {
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    line-height: 36px;
+
+}
+
+.toolbar-button-active {
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: #7521f3a8;
+    line-height: 36px;
+}

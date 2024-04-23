@@ -1,0 +1,10 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-evenly center" class="custom-toolbar">
+  <button mat-icon-button class="toolbar-button" [ngClass]="{ 'toolbar-button-active':selector===0}"
+    (click)="changeModeSelector(0)">
+    <mat-icon>attach_money</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-button" [ngClass]="{ 'toolbar-button-active':selector===1}"
+    (click)="changeModeSelector(1)">
+    <mat-icon>straighten</mat-icon>
+  </button>
+</mat-toolbar>

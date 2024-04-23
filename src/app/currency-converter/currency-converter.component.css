@@ -1,0 +1,66 @@
+.CurrencyCard{
+    height: 100%;
+    overflow-y: auto;
+    margin-left: 10px;
+  margin-right: 10px;
+}
+
+.CurrencyCard-container{
+  height:100% ;
+  width: 100%;
+}
+
+.result{
+text-align: center;
+margin-left: 20px;
+color: rgb(104, 74, 74);
+font-size: 16px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: 400;
+font-style: oblique;
+}
+
+.result-history{
+  text-align: left;
+  margin-left: 10px;
+  color: rgb(104, 74, 74);
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  font-style: oblique;
+  padding: 10px;
+  }
+  .online{
+    text-align: left;
+    margin-left: 10px;
+    color: rgb(54, 139, 88);
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-style: oblique;
+    padding: 10px;
+    }
+
+    .offline{
+      text-align: left;
+    margin-left: 10px;
+    color: rgb(146, 16, 16);
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-style: oblique;
+    padding: 10px;
+    }
+
+.to_div
+{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content:center;
+}
+
+.icons{
+  width:100%; text-align: center;
+   margin-top: 10px;
+}
