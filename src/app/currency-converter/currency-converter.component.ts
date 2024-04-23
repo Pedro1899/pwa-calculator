@@ -13,19 +13,19 @@ export class CurrencyConverterComponent implements OnInit {
     from: { shortname: '', value: 0 },
     to: [{ shortname: '', value: 0, result: '' }]
   };
-  offline:boolean=true
+  offline: boolean = true
   ConversionHistory: currency[] = []
   constructor(private apiService: ApiServiceService, private localStorage: LocalStorageService) {
-  
+
   }
   ngOnInit() {
     if (navigator.onLine) {
-      this.offline=false
+      this.offline = false
       this.apiService.getExchangeRatesApi().subscribe(response => {
         this.currencyArray = this.apiService.convertApiResponseToArray(response);
       });
     } else {
-      this.offline=true
+      this.offline = true
       this.currencyArray = this.apiService.CurrencyArray
     }
     const getHistory = this.localStorage.getCurrentHistory("History")
@@ -49,21 +49,21 @@ export class CurrencyConverterComponent implements OnInit {
   SwiftPage() {
     this.showHistory = !this.showHistory
   }
-
   doExchangeRate(value: string) {
     if (value !== "" && value !== "0") {
       //here we refresh the currencyArray if there is internet
       if (navigator.onLine) {
-        this.offline=false
+        this.offline = false
         this.apiService.getExchangeRatesApi().subscribe(response => {
           this.currencyArray = this.apiService.convertApiResponseToArray(response);
           this.procesingData(value)
         });
-      } else { this.offline=true
+      } else {
+        this.offline = true
         this.procesingData(value)
       }
-    
-    }else{
+
+    } else {
       this.currencyExchange.to.forEach(item => {
         item.value = 0
         item.result = ""
@@ -80,15 +80,21 @@ export class CurrencyConverterComponent implements OnInit {
       item.result = iconFrom + ". " + value + "  is  " + iconTo + ". " + item.value
     })
     this.localStorage.setCurrentCurrencty("CurrentCurrency", this.currencyExchange)
-    this.ConversionHistory.push(this.currencyExchange)
+    const getHistory = this.localStorage.getCurrentHistory("History")
+    if (getHistory) {
+      this.ConversionHistory = getHistory
+      this.ConversionHistory.push(this.currencyExchange)
+    } else {
+      this.ConversionHistory.push(this.currencyExchange)
+    }
     this.localStorage.setHistoryCurrencty("History", this.ConversionHistory)
   }
 
-  addNewConversion(){
+  addNewConversion() {
     const newFor = { shortname: "EUR", value: 0, result: "" }
     this.currencyExchange.to.push(newFor)
   }
-  deleteCurrency(index:number){
+  deleteCurrency(index: number) {
     this.currencyExchange.to.splice(index, 1);
   }
 }
